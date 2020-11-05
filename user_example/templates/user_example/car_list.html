@@ -1,0 +1,135 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Car List</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="{% static 'table/images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'table/vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'table/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'table/vendor/animate/animate.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'table/vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'table/vendor/perfect-scrollbar/perfect-scrollbar.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'table/css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'table/css/main.css' %}">
+<!--===============================================================================================-->
+
+<link rel="icon" type="image/png" href="{% static 'landing/images/icons/favicon.ico' %}"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'landing/vendor/bootstrap/css/bootstrap.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'landing/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'landing/fonts/Linearicons-Free-v1.0.0/icon-font.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'landing/vendor/animate/animate.css' %}">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="{% static 'landing/vendor/css-hamburgers/hamburgers.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'landing/vendor/select2/select2.min.css' %}">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="{% static 'landing/css/util.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'landing/css/main.css' %}">
+<!--===============================================================================================-->
+<head>
+<body>
+	<div class="limiter">
+		<div class="container-table100">
+			<div class="wrap-table100">
+				<div class="table100">
+                    {% csrf_token %}
+                    {% if user.groups.all.0.name == 'MASTER' %}
+                        <!--Table-->
+                        <table>
+                            <!--Table head-->
+                            <thead>
+                                <tr class="table100-head">
+                                    <th class="column1">Owner</th>
+                                    <th class="column3">Plate</th>
+                                    <th class="column3">Car Model</th>
+                                    <th class="column3">Year</th>
+                                    <th class="column6">Edit</th>
+                                </tr>
+                            </thead>
+                            <!--Table head-->
+                            <!--Table body-->
+                            <tbody>
+                                {% for car in object_list %}
+                                <tr>
+                                    <td class="column1">{{ car.owner }}</td>
+                                    <td class="column3">{{ car.plate }}</td>
+                                    <td class="column3">{{ car.carModel }}</td>
+                                    <td class="column3">{{ car.year }}</td>
+                                    <td class="column6"><a href="/update-car/{{car.id}}">ED</a></td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                            <!--Table body-->
+                        </table>
+                        <!--Table-->
+                        <div class="container-login100-form-btn p-t-25">
+                            <a href="/index" class="login100-form-btn">
+                                Go Back
+                            </a>
+                        </div>
+                    {% else %}
+                        <!--Table-->
+                        <table>
+                            <!--Table head-->
+                            <thead>
+                                <tr class="table100-head">
+                                    <th class="column1">Owner</th>
+                                    <th class="column3">Plate</th>
+                                    <th class="column4">Car Model</th>
+                                    <th class="column6">Year</th>
+                                </tr>
+                            </thead>
+                            <!--Table head-->
+                            <!--Table body-->
+                            <tbody>
+                                {% for car in object_list %}
+                                <tr>
+                                    <td class="column1">{{ car.owner }}</td>
+                                    <td class="column3">{{ car.plate }}</td>
+                                    <td class="column4">{{ car.carModel }}</td>
+                                    <td class="column6">{{ car.year }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                            <!--Table body-->
+                        </table>
+                        <!--Table-->
+                        <div class="container-login100-form-btn p-t-25">
+                            <a href="/index" class="login100-form-btn">
+                                Go Back
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+			</div>
+		</div>
+	</div>
+
+
+	
+
+<!--===============================================================================================-->	
+	<script src="{% static 'table/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'table/vendor/bootstrap/js/popper.js' %}"></script>
+	<script src="{% static 'table/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'table/vendor/select2/select2.min.js' %}"></script>
+<!--===============================================================================================-->
+	<script src="{% static 'table/js/main.js' %}"></script>
+
+</body>
+</html>
