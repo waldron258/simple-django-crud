@@ -16,7 +16,7 @@ from django.contrib.auth import logout as django_logout
 # Index view
 @login_required(login_url='login')
 def index(request):
-    return render (request, 'C:/Users/Waldron/Documents/BRAIN/Django/login_example/login_example/templates/registration/index.html')
+    return render (request, 'registration/index.html')
 
 
 # Logout view
