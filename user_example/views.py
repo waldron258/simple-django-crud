@@ -77,7 +77,7 @@ def updateCar(request, pk):
         if form.is_valid():
             form.save()
             return redirect('/car-list')
-    return render(request, 'C:/Users/Waldron/Documents/BRAIN/Django/login_example/user_example/templates/user_example/car_update.html', {'car': car})
+    return render(request, 'templates/user_example/car_update.html', {'car': car})
    
 
 # Car list
