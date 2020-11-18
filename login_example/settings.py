@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'login_example',
     'user_example',
+    'django_intercom',
 ]
 
 MIDDLEWARE = [
@@ -86,12 +87,18 @@ WSGI_APPLICATION = 'login_example.wsgi.application'
 import dj_database_url
 from decouple import config
 
-DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL')
-    )
-}
+#DATABASES = {
+#    'default': dj_database_url.config(
+#        default=config('DATABASE_URL')
+#    )
+#}
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': Path.joinpath(BASE_DIR,'db.sqlite3'),
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -142,3 +149,5 @@ LOGIN_URL = '/login/'
 CSRF_COOKIE_SECURE = True
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+INTERCOM_APPID = "your appID"
